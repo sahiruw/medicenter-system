@@ -1,1 +1,9 @@
-{"test3": {"role": 1, "password": "6e6fdf956d04289354dcf1619e28fe77"}, "sahiru1": {"role": 1, "password": "6c14da109e294d1e8155be8aa4b1ce8e"}, "sahiru2": {"role": 2, "password": "e53a0a2978c28872a4505bdb51db06dc"}, "sahiru3": {"role": 3, "password": "e034fb6b66aacc1d48f445ddfb08da98"}, "sahiru4": {"role": 4, "password": "81dc9bdb52d04dc20036dbd8313ed055"}, "aka": {"role": 4, "password": "39b27f0268b9d1464f764e0f0634719d"}, "aad": {"role": 4, "password": "75bd5c77a374db70bbb8b186157a1988"}}
+{
+    "test3": {"role": 1, "password": "6e6fdf956d04289354dcf1619e28fe77"}, 
+    "sahiru1": {"role": 1, "password": "6c14da109e294d1e8155be8aa4b1ce8e"}, 
+    "sahiru2": {"role": 2, "password": "e53a0a2978c28872a4505bdb51db06dc"}, 
+    "sahiru3": {"role": 3, "password": "e034fb6b66aacc1d48f445ddfb08da98"}, 
+    "sahiru4": {"role": 4, "password": "81dc9bdb52d04dc20036dbd8313ed055"}, 
+    "aka": {"role": 4, "password": "39b27f0268b9d1464f764e0f0634719d"}, 
+    "aad": {"role": 4, "password": "75bd5c77a374db70bbb8b186157a1988"}, 
+    "sahiru2k@gmail.com": {"role": 3, "password": "140894d7f81827e2bf01ea3142bf4738"}}
