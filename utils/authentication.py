@@ -15,20 +15,21 @@ class Authentication:
         if user_name in past_users:
             if past_users[user_name]['password'] == hash_password(password):
                 role = past_users[user_name]['role']
-                if role == 1:
-                    self.currentUser = Admin(user_name)
-                    return self.currentUser
-                elif role == 2:
-                    self.currentUser = Doctor(user_name)
-                    return self.currentUser
-                elif role == 3:
-                    self.currentUser = Receptionist(user_name)
-                    return self.currentUser
-                elif role == 4:
-                    self.currentUser = Patient(user_name)
-                    return self.currentUser
-                else:
-                    print("Invalid role")
+                match role:
+                    case 1:
+                        self.currentUser = Admin(user_name)
+                        return self.currentUser
+                    case 2:
+                        self.currentUser = Doctor(user_name)
+                        return self.currentUser
+                    case 3:
+                        self.currentUser = Receptionist(user_name)
+                        return self.currentUser
+                    case 4:
+                        self.currentUser = Patient(user_name)
+                        return self.currentUser
+                    case _:
+                        print("Invalid role")
             else:
                 print("Invalid password")
         else:

@@ -35,15 +35,16 @@ class Receptionist(User) :
         print("\nReceptionist working...")
         print ('''Enter 0 for getting patient details.\nEnter 1 for registering a new patient.\nEnter 9 for changing password.''')
         choice = int(input("Enter your choice: ").strip())
-        if choice == 1:
-            username = input("Patient email: ").strip()
-            pw = input("Password: ").strip()
-            self.addPatient(username, pw)
-        elif choice == 0:
-            patientID = input("Patient email: ").strip()
-            super().printDetailsofPatient(patientID)
-        elif choice == 9:
-            super().changePassword()
-        else:
-            print("Invalid Input")
+        match choice:
+            case 1:
+                username = input("Patient email: ").strip()
+                pw = input("Password: ").strip()
+                self.addPatient(username, pw)
+            case 0:
+                patientID = input("Patient email: ").strip()
+                super().printDetailsOfPatient(patientID)
+            case 9:
+                super().changePassword()
+            case _:
+                print("Invalid Input")
 

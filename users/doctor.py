@@ -45,15 +45,16 @@ class Doctor(User):
         print('''Enter 0 for viewing patient details.\nEnter 1 for adding sickness details.\nEnter 2 for adding drug prescriptions.\nEnter 3 for adding lab test prescriptions.\n\nEnter 9 for changing the password.''')
         choice = int(input("Your choice: ").strip())
         patientID = input("Patient email: ").strip()
-        if choice == 1:
-            self.addSicknessDetails(patientID)
-        elif choice == 2:
-            self.addDrugPrescriptions(patientID)
-        elif choice == 3:
-            self.addLabTestPrescriptions(patientID)
-        elif choice == 0:
-            super().printDetailsofPatient(patientID)
-        elif choice == 9:
-            super().changePassword()
-        else:
-            print("Invalid Input")
+        match choice:
+            case 1:
+                self.addSicknessDetails(patientID)
+            case 2:
+                self.addDrugPrescriptions(patientID)
+            case 3:
+                self.addLabTestPrescriptions(patientID)
+            case 0:
+                super().printDetailsOfPatient(patientID)
+            case 9:
+                super().changePassword()
+            case _:
+                print("Invalid Input")

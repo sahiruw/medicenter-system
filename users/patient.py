@@ -15,13 +15,14 @@ class Patient(User) :
         print("\nPatient working...")
         print ('''Enter 0 for viewing the patient details.\nenter 9 for changing the password..''')
         choice = int(input("Your choice: ").strip())
-        if choice == 1:
-            pass
-        elif choice == 0:
-            patientID = input("Patient email: ").strip()
-            super().printDetailsofPatient(patientID)
-        elif choice == 9:
-            super().changePassword()
-        else:
-            print("Invalid Input")
+        match choice:
+            case 1:
+                pass  # Put your code for choice 1 here
+            case 0:
+                patientID = input("Patient email: ").strip()
+                super().printDetailsOfPatient(patientID)
+            case 9:
+                super().changePassword()
+            case _:
+                print("Invalid Input")
 
