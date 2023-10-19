@@ -21,8 +21,13 @@ class User:
     def getusername(self):
         return self.__username
 
-    def printDetailsofPatient(self, username):
+    def printDetailsofPatient(self):
         pastPatients = readJSON("PatientData.json")
+        if self.__role == 4:
+            username = self.__username
+        else:
+            username = input("Enter patient email: ").strip()
+            
         if username in pastPatients:
             patientData = pastPatients[username]
             for key in self.__accessList[self.__role]:

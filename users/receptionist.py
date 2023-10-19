@@ -41,8 +41,8 @@ class Receptionist(User) :
             pw = generate_random_password()
             self.addPatient(username, pw)
         elif choice == 0:
-            patientID = input("Enter patient email: ").strip()
-            super().printDetailsofPatient(patientID)
+            
+            super().printDetailsofPatient()
         elif choice == 9:
             super().changePassword()
         else:

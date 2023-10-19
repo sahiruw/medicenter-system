@@ -42,7 +42,8 @@ class Doctor(User):
 
     def work(self):
         print("\nDoctor working...")
-        print('''Print 0 to view patient details.\nPrint 1 to add sickness details.\nPrint 2 to add drug prescriptions.\nPrint 3 to add lab test prescriptions.\n\nPrint 9 to change password.''')
+        print('''Print 0 to view patient details.\nPrint 1 to add sickness details.\n
+              Print 2 to add drug prescriptions.\nPrint 3 to add lab test prescriptions.\n\nPrint 9 to change password.''')
         choice = int(input("Enter your choice: ").strip())
         patientID = input("Enter patient email: ").strip()
         if choice == 1:
@@ -52,7 +53,7 @@ class Doctor(User):
         elif choice == 3:
             self.addLabTestPrescriptions(patientID)
         elif choice == 0:
-            super().printDetailsofPatient(patientID)
+            super().printDetailsofPatient()
         elif choice == 9:
             super().changePassword()
         else:

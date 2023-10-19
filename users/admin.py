@@ -30,14 +30,12 @@ class Admin(User) :
         choice = int(input("Enter your choice: ").strip())
         if choice == 1:
             username = input("Enter user email: ").strip()
-            # pw = input("Enter password: ").strip()
             role = int(input("Enter role: ").strip())
             pw = generate_random_password()
             self.registerUser(username, pw, role)
-            # self.registerUser("test3", "pw1", 1)
+
         elif choice == 0:
-            patientID = input("Enter patient email: ").strip()
-            super().printDetailsofPatient(patientID)
+            super().printDetailsofPatient()
         elif choice == 9:
             super().changePassword()
         else:

@@ -18,8 +18,8 @@ class Patient(User) :
         if choice == 1:
             pass
         elif choice == 0:
-            patientID = input("Enter patient email: ").strip()
-            super().printDetailsofPatient(patientID)
+
+            super().printDetailsofPatient()
         elif choice == 9:
             super().changePassword()
         else:
