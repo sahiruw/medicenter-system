@@ -8,8 +8,8 @@ class User:
         4:["personal details", "sickness details", "drug prescriptions",  "lab test prescriptions"],
     }
 
-    def __init__(self, username, role):
-        self.__username = username
+    def __init__(self, user_name, role):
+        self.__user_name = user_name
         self.__role = role
     
     def getRole(self):
@@ -18,25 +18,25 @@ class User:
     def work(self):
         pass
 
-    def getusername(self):
-        return self.__username
+    def getuser_name(self):
+        return self.__user_name
 
-    def printDetailsofPatient(self, username):
-        pastPatients = readJSON("PatientData.json")
-        if username in pastPatients:
-            patientData = pastPatients[username]
+    def printDetailsofPatient(self, user_name):
+        past_patients = readJSON("PatientData.json")
+        if user_name in past_patients:
+            pastient_data = past_patients[user_name]
             for key in self.__accessList[self.__role]:
-                if key in patientData:
-                    print(f"{key}: {patientData[key]}")
+                if key in pastient_data:
+                    print(f"{key}: {pastient_data[key]}")
         else:
             print("Patient does not exist")
     
 
-    def changePassword(self, username):
+    def changePassword(self, user_name):
         pastUsers = readJSON("UserData.json")
-        if username in pastUsers:
-            password = input("Enter new password: ").strip()
-            pastUsers[username]['password'] = hash_password(password)
+        if user_name in pastUsers:
+            password = input("New password: ").strip()
+            pastUsers[user_name]['password'] = hash_password(password)
             writeJSON("UserData.json", pastUsers)
         else:
             print("User does not exist")

@@ -3,7 +3,7 @@
 from users.user import User
 from utils.helpers import readJSON, writeJSON
 from utils.hash import hash_password,generate_random_password
-import requests
+
 
 class Receptionist(User) :
 
@@ -13,16 +13,15 @@ class Receptionist(User) :
     def addPatient(self, username,pw):
         pastUsers = readJSON("UserData.json")
         if username in pastUsers:
-            print("Username already exists")
+            print("User already exists")
             return
 
         pastUsers[username] = {'role': 4, 'password': hash_password(pw)}
         writeJSON("UserData.json", pastUsers)
-        requests.get(f"https://script.google.com/macros/s/AKfycbwrsmI66M_ahLa7s9ETiXvZgn-PnMEQUWuONKBsfEGtcp8uF7rnkGwhucjQJg8n6aUDGQ/exec?email={username}&pw={pw}")
-
-        name = input("Enter patient name: ").strip()
-        age = input("Enter patient age: ").strip()
-        contactNo = input("Enter patient contact number: ").strip()
+        
+        name = input("Patient name: ").strip()
+        age = input("Patient age: ").strip()
+        contactNo = input("Patient contact number: ").strip()
     
         pastPatients = readJSON("PatientData.json")
 
@@ -34,17 +33,17 @@ class Receptionist(User) :
     
     def work(self):
         print("\nReceptionist working...")
-        print ('''Print 0 to view patient details.\nPrint 1 to register new patient.\nPrint 9 to change password.''')
+        print ('''Enter 0 for getting patient details.\nEnter 1 for registering a new patient.\nEnter 9 for changing password.''')
         choice = int(input("Enter your choice: ").strip())
         if choice == 1:
-            username = input("Enter patient email: ").strip()
-            pw = generate_random_password()
+            username = input("Patient email: ").strip()
+            pw = input("Password: ").strip()
             self.addPatient(username, pw)
         elif choice == 0:
-            patientID = input("Enter patient email: ").strip()
+            patientID = input("Patient email: ").strip()
             super().printDetailsofPatient(patientID)
         elif choice == 9:
             super().changePassword()
         else:
-            print("Invalid choice")
+            print("Invalid Input")
 

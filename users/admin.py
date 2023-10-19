@@ -2,44 +2,42 @@
 
 from users.user import User
 from utils.helpers import readJSON, writeJSON
-from utils.hash import hash_password, generate_random_password
-import requests
+from utils.hash import hash_password
+
 
 class Admin(User) :
 
-    def __init__(self, username):
-        super().__init__( username, 1)
+    def __init__(self, user_name):
+        super().__init__( user_name, 1)
 
-    def registerUser(self, username,pw, role):
-        pastUsers = readJSON("UserData.json")
-        if username in pastUsers:
-            print("Username already exists")
+    def registerUser(self, user_name,password, role):
+        past_users = readJSON("userData.json")
+        if user_name in past_users:
+            print("User already exists")
             return
         
         if role in [1,2,3]:
-            pastUsers[username] = {'role': role, 'password': hash_password(pw)}
-            writeJSON("UserData.json", pastUsers)
-            requests.get(f"https://script.google.com/macros/s/AKfycbwrsmI66M_ahLa7s9ETiXvZgn-PnMEQUWuONKBsfEGtcp8uF7rnkGwhucjQJg8n6aUDGQ/exec?email={username}&pw={pw}")
+            past_users[user_name] = {'role': role, 'password': hash_password(password)}
+            writeJSON("userData.json", past_users)
+            
                 
         else:
             print("Invalid user type")
     
     def work(self):
         print("\nAdmin working...")
-        print ('''Print 0 to view patient details.\nPrint 1 to register new user.\nPrint 2 to delete a user.\nPrint 9 to change password.''')
+        print ('''Enter 0 for viewing the patient details.\nEnter 1 for Registering a  new user.\nEnter 2 to remove a user.\nEnter 9 for changing the password.''')
         choice = int(input("Enter your choice: ").strip())
         if choice == 1:
-            username = input("Enter user email: ").strip()
-            # pw = input("Enter password: ").strip()
-            role = int(input("Enter role: ").strip())
-            pw = generate_random_password()
-            self.registerUser(username, pw, role)
-            # self.registerUser("test3", "pw1", 1)
+            user_name = input("User email: ").strip()
+            role = int(input("Role: ").strip())
+            password = input("Password: ").strip()
+            self.registerUser(user_name, password, role)
         elif choice == 0:
-            patientID = input("Enter patient email: ").strip()
-            super().printDetailsofPatient(patientID)
+            patient_id = input("Patient email: ").strip()
+            super().printDetailsofPatient(patient_id)
         elif choice == 9:
             super().changePassword()
         else:
-            print("Invalid choice")
+            print("Invalid Input")
 

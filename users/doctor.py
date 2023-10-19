@@ -2,7 +2,7 @@
 
 from users.user import User
 from utils.helpers import readJSON, writeJSON, getTimestamp
-from utils.hash import hash_password
+
 
 
 class Doctor(User):
@@ -13,8 +13,8 @@ class Doctor(User):
     def addSicknessDetails(self, username):
         pastPatients = readJSON("PatientData.json")
         if username in pastPatients:
-            sickness = input("Enter sickness details: ").strip()
-            pastPatients[username]["sickness details"].append(
+            sickness = input("Sickness details: ").strip()
+            pastPatients[username]["Sickness details"].append(
                 [sickness, getTimestamp()])
             writeJSON("PatientData.json", pastPatients)
         else:
@@ -23,7 +23,7 @@ class Doctor(User):
     def addDrugPrescriptions(self, username):
         pastPatients = readJSON("PatientData.json")
         if username in pastPatients:
-            sickness = input("Enter drug prescriptions: ").strip()
+            sickness = input("Drug prescriptions: ").strip()
             pastPatients[username]["drug prescriptions"].append(
                 [sickness, getTimestamp()])
             writeJSON("PatientData.json", pastPatients)
@@ -33,7 +33,7 @@ class Doctor(User):
     def addLabTestPrescriptions(self, username):
         pastPatients = readJSON("PatientData.json")
         if username in pastPatients:
-            sickness = input("Enter lab test prescriptions: ").strip()
+            sickness = input("Lab test prescriptions: ").strip()
             pastPatients[username]["lab test prescriptions"].append(
                 [sickness, getTimestamp()])
             writeJSON("PatientData.json", pastPatients)
@@ -42,9 +42,9 @@ class Doctor(User):
 
     def work(self):
         print("\nDoctor working...")
-        print('''Print 0 to view patient details.\nPrint 1 to add sickness details.\nPrint 2 to add drug prescriptions.\nPrint 3 to add lab test prescriptions.\n\nPrint 9 to change password.''')
-        choice = int(input("Enter your choice: ").strip())
-        patientID = input("Enter patient email: ").strip()
+        print('''Enter 0 for viewing patient details.\nEnter 1 for adding sickness details.\nEnter 2 for adding drug prescriptions.\nEnter 3 for adding lab test prescriptions.\n\nEnter 9 for changing the password.''')
+        choice = int(input("Your choice: ").strip())
+        patientID = input("Patient email: ").strip()
         if choice == 1:
             self.addSicknessDetails(patientID)
         elif choice == 2:
@@ -56,4 +56,4 @@ class Doctor(User):
         elif choice == 9:
             super().changePassword()
         else:
-            print("Invalid choice")
+            print("Invalid Input")

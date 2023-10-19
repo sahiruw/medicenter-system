@@ -9,23 +9,23 @@ class Authentication:
     currentUser = None
 
     def login(self ):
-        username = input("Enter username: ").strip()
-        password = input("Enter password: ").strip()
-        pastUsers = readJSON("UserData.json")
-        if username in pastUsers:
-            if pastUsers[username]['password'] == hash_password(password):
-                role = pastUsers[username]['role']
+        user_name = input("Username: ").strip()
+        password = input("Password: ").strip()
+        past_users = readJSON("UserData.json")
+        if user_name in past_users:
+            if past_users[user_name]['password'] == hash_password(password):
+                role = past_users[user_name]['role']
                 if role == 1:
-                    self.currentUser = Admin(username)
+                    self.currentUser = Admin(user_name)
                     return self.currentUser
                 elif role == 2:
-                    self.currentUser = Doctor(username)
+                    self.currentUser = Doctor(user_name)
                     return self.currentUser
                 elif role == 3:
-                    self.currentUser = Receptionist(username)
+                    self.currentUser = Receptionist(user_name)
                     return self.currentUser
                 elif role == 4:
-                    self.currentUser = Patient(username)
+                    self.currentUser = Patient(user_name)
                     return self.currentUser
                 else:
                     print("Invalid role")
