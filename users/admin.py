@@ -36,7 +36,7 @@ class Admin(User) :
                 self.registerUser(user_name, password, role)
             case 0:
                 patient_id = input("Patient email: ").strip()
-                super().printDetailsOfPatient(patient_id)
+                super().printDetailsOfPatient()
             case 9:
                 super().changePassword()
             case _:

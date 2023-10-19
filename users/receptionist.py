@@ -42,7 +42,7 @@ class Receptionist(User) :
                 self.addPatient(username, pw)
             case 0:
                 patientID = input("Patient email: ").strip()
-                super().printDetailsOfPatient(patientID)
+                super().printDetailsOfPatient()
             case 9:
                 super().changePassword()
             case _:

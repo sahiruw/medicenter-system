@@ -20,7 +20,7 @@ class Patient(User) :
                 pass  # Put your code for choice 1 here
             case 0:
                 patientID = input("Patient email: ").strip()
-                super().printDetailsOfPatient(patientID)
+                super().printDetailsOfPatient()
             case 9:
                 super().changePassword()
             case _:

@@ -53,7 +53,7 @@ class Doctor(User):
             case 3:
                 self.addLabTestPrescriptions(patientID)
             case 0:
-                super().printDetailsOfPatient(patientID)
+                super().printDetailsOfPatient()
             case 9:
                 super().changePassword()
             case _:

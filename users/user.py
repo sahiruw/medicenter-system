@@ -21,15 +21,21 @@ class User:
     def getuser_name(self):
         return self.__user_name
 
-    def printDetailsofPatient(self, user_name):
+    def printDetailsofPatient(self):
         past_patients = readJSON("PatientData.json")
-        if user_name in past_patients:
-            pastient_data = past_patients[user_name]
+        if self.__role == 4:
+            username = self.__username
+        else:
+            username = input("Enter patient email: ").strip()
+            
+        if username in past_patients:
+            patientData = past_patients[username]
             for key in self.__accessList[self.__role]:
-                if key in pastient_data:
-                    print(f"{key}: {pastient_data[key]}")
+                if key in patientData:
+                    print(f"{key}: {patientData[key]}")
         else:
             print("Patient does not exist")
+
     
 
     def changePassword(self, user_name):
